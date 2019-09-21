@@ -9,14 +9,14 @@ import { Observable } from 'rxjs';
 })
 export class YoutubeService {
 
-  apiKey: string = 'AIzaSyDAg_JYmtAbIcNRgywofmxczJPMmpMuTLs';
-  maxResults: string = '50';
-  apiBaseURL: string = 'https://www.googleapis.com/youtube/v3/videos';
+  apiKey = 'AIzaSyDAg_JYmtAbIcNRgywofmxczJPMmpMuTLs';
+  maxResults = '50';
+  apiBaseURL = 'https://www.googleapis.com/youtube/v3/videos';
 
   constructor(private http: HttpClient) { }
 
 
-  getYoutubeTrendingVideos(alpha2code: string) : Observable<any>{
+  getYoutubeTrendingVideos(alpha2code: string): Observable<any> {
     return this.http.get(this.apiBaseURL, {
       params: new HttpParams()
         .append('part', 'snippet')
@@ -28,7 +28,7 @@ export class YoutubeService {
     }) as Observable<any>;
   }
 
-  getNigeriaYoutubeTrendingVideos() : Observable<any>{
+  getNigeriaYoutubeTrendingVideos(): Observable<any> {
     return this.http.get(this.apiBaseURL, {
       params: new HttpParams()
         .append('part', 'snippet')
@@ -42,7 +42,7 @@ export class YoutubeService {
 
 
 
-  getAllCountry() : Observable<any>{
+  getAllCountry(): Observable<any> {
     return this.http.get('https://restcountries.eu/rest/v2/all') as Observable<any>;
   }
 }

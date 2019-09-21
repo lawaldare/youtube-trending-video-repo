@@ -7,7 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SafePipe } from './safePipe.pipe';
 import {FormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { environment } from '../environments/environment'
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   title = 'youtube-trending';
   countries: any;
   countryTrendingYoutubeVideos: any[];
+  p = 1;
+
 
 
 
@@ -26,27 +28,27 @@ export class AppComponent implements OnInit {
   }
 
 
-  selectCountry(event){
+  selectCountry(event) {
     let alpha2code = event.target.value;
     this.youtubeService.getYoutubeTrendingVideos(alpha2code).subscribe(data => {
-      this.countryTrendingYoutubeVideos = data['items'];
-      console.log(this.countryTrendingYoutubeVideos)
-    })
+      this.countryTrendingYoutubeVideos = data.items;
+      console.log(this.countryTrendingYoutubeVideos);
+    });
   }
 
-  defaultNigeria(){
+  defaultNigeria() {
     this.youtubeService.getNigeriaYoutubeTrendingVideos().subscribe(data => {
-      this.countryTrendingYoutubeVideos = data['items'];
-    })
+      this.countryTrendingYoutubeVideos = data.items;
+    });
   }
 
-  getCountries(){
+  getCountries() {
     this.youtubeService.getAllCountry().subscribe(data => {
       this.countries = data;
-    })
+    });
   }
 
-  getVideo(id: string){
+  getVideo(id: string) {
     return `https://www.youtube.com/embed/${id}`;
   }
 

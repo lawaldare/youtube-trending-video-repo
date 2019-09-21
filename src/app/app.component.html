@@ -11,10 +11,13 @@
 </div>
 
 
-<div class="embed-responsive embed-responsive-4by3" *ngFor="let video of countryTrendingYoutubeVideos">
+<div class="embed-responsive embed-responsive-4by3" *ngFor="let video of countryTrendingYoutubeVideos | paginate: { itemsPerPage: 10, currentPage: p }">
   <iframe class="embed-responsive-item" [src]="getVideo(video.id) | safe" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   <div class="content">
     <h4 class="title">{{video.snippet.title}}</h4>
     <p class="description">{{video.snippet.description.substring(0, 300)}}...</p>
   </div>
 </div>
+
+
+<pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>
