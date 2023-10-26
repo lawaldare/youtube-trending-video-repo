@@ -11,7 +11,7 @@ export class YoutubeService {
   maxResults = '50';
   apiBaseURL = 'https://www.googleapis.com/youtube/v3/videos';
 
-  countryAlpha2Code = signal<string>('GB');
+  countryAlpha2Code = signal<string>('MT');
 
   constructor(private http: HttpClient) {}
 
