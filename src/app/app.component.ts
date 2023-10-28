@@ -44,7 +44,7 @@ export class AppComponent {
       nzContent: VideoComponent,
       nzClosable: false,
       nzCentered: true,
-      nzCancelText: null,
+      nzOkText: null,
       nzData: video.id,
     });
   }
