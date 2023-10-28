@@ -2,7 +2,7 @@
   <h1 class="text-center">Youtube Trending Video</h1>
   <div class="col-md-8 m-auto">
     <div class="form-group mt-2">
-      <nz-select class="form-control" [nzSize]="'large'" nzShowSearch nzAllowClear nzPlaceHolder="Select a country"
+      <nz-select class="form-control" [nzSize]="'large'" nzShowSearch nzPlaceHolder="Select a country"
         (ngModelChange)="selectCountry($event)" [(ngModel)]="alpha2Code">
         <nz-option *ngFor="let country of (countries$ | async)" [nzLabel]="country.name"
           [nzValue]="country.code"></nz-option>

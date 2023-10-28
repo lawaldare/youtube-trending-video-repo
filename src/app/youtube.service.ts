@@ -9,7 +9,7 @@ import { toSignal, toObservable } from '@angular/core/rxjs-interop';
 export class YoutubeService {
   apiKey = 'AIzaSyDjltnL2Wyi7UdjkySyhyYsNlG0zBP6SqY';
   maxResults = '50';
-  apiBaseURL = 'https://www.googleapis.com/youtube/v3/videos';
+  apiBaseURL = 'https://www.googleapis.com/youtube/v3/';
 
   countryAlpha2Code = signal<string>('MT');
 
@@ -21,7 +21,7 @@ export class YoutubeService {
 
   private trendingVideos$ = toObservable(this.countryAlpha2Code).pipe(
     switchMap((alpha2code) => {
-      return this.http.get(this.apiBaseURL, {
+      return this.http.get(`${this.apiBaseURL}videos`, {
         params: new HttpParams()
           .append('part', 'snippet')
           .append('chart', 'mostPopular')
@@ -38,9 +38,18 @@ export class YoutubeService {
 
   trendingVideos = toSignal(this.trendingVideos$, { initialValue: [] });
 
-  getAllCountry(): Observable<any> {
-    return this.http.get('https://restcountries.com/v3.1/all') as Observable<
-      any
-    >;
+  getYouTubeRegionList() {
+    return this.http
+      .get(`${this.apiBaseURL}i18nRegions`, {
+        params: new HttpParams()
+          .append('part', 'snippet')
+          .append('kind', 'youtube#i18nRegionListResponse')
+          .append('key', this.apiKey),
+      })
+      .pipe(
+        map((response: any) => {
+          return response.items;
+        })
+      );
   }
 }

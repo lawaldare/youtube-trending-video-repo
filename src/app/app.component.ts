@@ -1,5 +1,5 @@
 import { YoutubeService } from './youtube.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { map } from 'rxjs/operators';
 import { VideoComponent } from './video/video.component';
@@ -11,11 +11,11 @@ import { VideoComponent } from './video/video.component';
 })
 export class AppComponent {
   title = 'youtube-trending';
-  countries$ = this.youtubeService.getAllCountry().pipe(
+  countries$ = this.youtubeService.getYouTubeRegionList().pipe(
     map((countries) => {
       const sortedCountries = countries.sort(function (a, b) {
-        const nameA = a.name.common.toUpperCase(); // ignore upper and lowercase
-        const nameB = b.name.common.toUpperCase(); // ignore upper and lowercase
+        const nameA = a.snippet.name.toUpperCase(); // ignore upper and lowercase
+        const nameB = b.snippet.name.toUpperCase(); // ignore upper and lowercase
         if (nameA > nameB) {
           return 1;
         }
@@ -26,8 +26,8 @@ export class AppComponent {
         return 0;
       });
       return sortedCountries.map((country) => ({
-        name: country.name.common,
-        code: country.cca2,
+        name: country.snippet.name,
+        code: country.snippet.gl,
       }));
     })
   );
