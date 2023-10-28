@@ -9,7 +9,7 @@ import { VideoComponent } from './video/video.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'youtube-trending';
   countries$ = this.youtubeService.getAllCountry().pipe(
     map((countries) => {
@@ -32,15 +32,11 @@ export class AppComponent implements OnInit {
     })
   );
   countryTrendingYoutubeVideos = this.youtubeService.trendingVideos;
-
+  alpha2Code: string;
   constructor(
     private youtubeService: YoutubeService,
     private modal: NzModalService
   ) {}
-
-  ngOnInit(): void {
-    console.log(this.countryTrendingYoutubeVideos());
-  }
 
   openModal(video: any) {
     this.modal.create({
@@ -53,9 +49,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  selectCountry(event) {
-    console.log(event);
-    let alpha2code = event.target.value;
-    this.youtubeService.selectCountry(alpha2code);
+  selectCountry(event: string) {
+    this.youtubeService.selectCountry(event);
   }
 }
