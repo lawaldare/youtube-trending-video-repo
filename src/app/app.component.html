@@ -17,7 +17,7 @@
 <section class="container">
   <nz-card nzHoverable [nzCover]="coverTemplate" *ngFor="let video of countryTrendingYoutubeVideos()"
     (click)="openModal(video)">
-    <img alt="example" [src]="video.snippet.thumbnails.standard.url" />
-    <nz-card-meta [nzTitle]="video.snippet.channelTitle" [nzDescription]="video.snippet.title"></nz-card-meta>
+    <img alt="example" [src]="video.snippet?.thumbnails?.standard?.url" />
+    <nz-card-meta [nzTitle]="video.snippet?.channelTitle" [nzDescription]="video.snippet?.title"></nz-card-meta>
   </nz-card>
 </section>
