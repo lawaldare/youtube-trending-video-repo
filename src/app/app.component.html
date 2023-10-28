@@ -2,23 +2,22 @@
   <h1 class="text-center">Youtube Trending Video</h1>
   <div class="col-md-8 m-auto">
     <div class="form-group mt-2">
-      <select class="form-control" (change)="selectCountry($event)">
-        <option [value]="" disabled selected>Select Country</option>
-        <option *ngFor="let country of (countries$ | async)" [value]='country.code'>{{country.name}}</option>
-      </select>
+      <nz-select class="form-control" [nzSize]="'large'" nzShowSearch nzAllowClear nzPlaceHolder="Select a country"
+        (ngModelChange)="selectCountry($event)">
+        <nz-option *ngFor="let country of (countries$ | async)" [nzLabel]="country.name"
+          [nzValue]="country.code"></nz-option>
+      </nz-select>
     </div>
   </div>
 </div>
 
 
-<div class="embed-responsive embed-responsive-4by3"
-  *ngFor="let video of countryTrendingYoutubeVideos() | paginate: { itemsPerPage: 10, currentPage: p }">
-  <iframe class="embed-responsive-item" [src]="getVideo(video.id) | safe" frameborder="0"
-    allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  <div class="content">
-    <h4 class="title">{{video.snippet.title}}</h4>
-    <p class="description">{{video.snippet.description.substring(0, 300)}}...</p>
-  </div>
-</div>
 
-<pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>
+
+<section class="container">
+  <nz-card nzHoverable [nzCover]="coverTemplate" *ngFor="let video of countryTrendingYoutubeVideos()"
+    (click)="openModal(video)">
+    <img alt="example" [src]="video.snippet.thumbnails.standard.url" />
+    <nz-card-meta [nzTitle]="video.snippet.channelTitle" [nzDescription]="video.snippet.title"></nz-card-meta>
+  </nz-card>
+</section>

@@ -1,73 +1,63 @@
 * {
-    font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 html {
-    font-size: 10px;
+  font-size: 10px;
 }
 
-
-h1, h4 {
-    font-weight: bolder;
-	background-image: linear-gradient(to right,  #9cf38c, #0e6b4c);
-	background-clip: text; 
-	color: transparent;
-	letter-spacing: 0.2rem;
+h1,
+h4 {
+  font-weight: bolder;
+  background-image: linear-gradient(to right, #9cf38c, #0e6b4c);
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.2rem;
 }
 
-
-.embed-responsive {
-    margin: 50px auto !important;
-    width: 60%;
-    box-shadow: 0 1rem 2rem rgba(black, .15);
-
-    position: relative;
-    border-radius: 10px;
-
-
-    &-item {
-        height: 80% !important;
-    }
+section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
 }
 
 .content {
-    position: absolute;
-    top: 80%;
-    padding: 20px;
+  position: absolute;
+  top: 80%;
+  padding: 20px;
 }
 
+// @media only screen and (max-width: 1200px) {
+//   .embed-responsive {
+//     width: 90%;
+//   }
+// }
 
-@media only screen and (max-width: 1200px) {
-    .embed-responsive {
-        width: 90%;
-    }
-}
+// @media only screen and (max-width: 768px) {
+//   .title {
+//     font-size: 1rem;
+//   }
 
-@media only screen and (max-width: 768px) {
-    .title {
-        font-size: 1rem;
-    }
+//   .description {
+//     display: none;
+//   }
+// }
 
-    .description {
-        display: none;
-    }
-}
+// @media only screen and (max-width: 425px) {
+//   .title {
+//     font-size: 0.7rem;
+//   }
+// }
 
-@media only screen and (max-width: 425px) {
-    .title {
-        font-size: 0.7rem;
-    }
-}
+// @media only screen and (max-width: 375px) {
+//   .title {
+//     font-size: 0.5rem;
+//   }
 
-@media only screen and (max-width: 375px) {
-    .title {
-        font-size: 0.5rem;
-    }
-
-    .description {
-        display: none;
-    }
-    .text-center {
-        font-size: 0.8rem;
-    }
-}
+//   .description {
+//     display: none;
+//   }
+//   .text-center {
+//     font-size: 0.8rem;
+//   }
+// }

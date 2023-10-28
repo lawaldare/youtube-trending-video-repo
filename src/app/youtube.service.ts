@@ -31,7 +31,9 @@ export class YoutubeService {
           .append('key', this.apiKey),
       });
     }),
-    map((response: any) => response.items)
+    map((response: any) => {
+      return response.items;
+    })
   );
 
   trendingVideos = toSignal(this.trendingVideos$, { initialValue: [] });

@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+nz-card {
+  box-shadow: 0 1rem 2rem rgba(black, 0.15);
+  cursor: pointer;
+}
+
+.ant-card-body {
+  img {
+    width: 100%;
+  }
+
+  .ant-card-meta-detail {
+    padding: 10px;
+  }
+
+  .ant-card-meta-title {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+}
+
+.form-control {
+  border: none !important;
+}
+
+.form-control:focus {
+  border-color: unset !important;
+  box-shadow: none !important;
+}

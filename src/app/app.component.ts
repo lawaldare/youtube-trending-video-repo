@@ -1,13 +1,15 @@
 import { YoutubeService } from './youtube.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { map } from 'rxjs/operators';
+import { VideoComponent } from './video/video.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'youtube-trending';
   countries$ = this.youtubeService.getAllCountry().pipe(
     map((countries) => {
@@ -30,16 +32,30 @@ export class AppComponent {
     })
   );
   countryTrendingYoutubeVideos = this.youtubeService.trendingVideos;
-  p = 1;
 
-  constructor(private youtubeService: YoutubeService) {}
+  constructor(
+    private youtubeService: YoutubeService,
+    private modal: NzModalService
+  ) {}
 
-  selectCountry(event) {
-    let alpha2code = event.target.value;
-    this.youtubeService.selectCountry(alpha2code);
+  ngOnInit(): void {
+    console.log(this.countryTrendingYoutubeVideos());
   }
 
-  getVideo(id: string) {
-    return `https://www.youtube.com/embed/${id}`;
+  openModal(video: any) {
+    this.modal.create({
+      nzTitle: video.snippet.title,
+      nzContent: VideoComponent,
+      nzClosable: false,
+      nzCentered: true,
+      nzCancelText: null,
+      nzData: video.id,
+    });
+  }
+
+  selectCountry(event) {
+    console.log(event);
+    let alpha2code = event.target.value;
+    this.youtubeService.selectCountry(alpha2code);
   }
 }
