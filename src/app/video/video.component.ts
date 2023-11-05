@@ -7,9 +7,9 @@ import { NZ_MODAL_DATA } from 'ng-zorro-antd/modal';
   styleUrls: ['./video.component.scss'],
 })
 export class VideoComponent {
-  readonly nzModalData: string = inject(NZ_MODAL_DATA);
+  readonly videoId: string = inject(NZ_MODAL_DATA);
 
-  getVideo() {
-    return `https://www.youtube.com/embed/${this.nzModalData}`;
+  get getVideo() {
+    return `https://www.youtube.com/embed/${this.videoId}`;
   }
 }
